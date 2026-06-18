@@ -4,8 +4,8 @@
 #  作者 Hermes 对接 mimo-v2.5-pro
 #  https://zelikk.blogspot.com/2026/06/sing-box-anytls.html
 #  用法:
-#    bash sing-box-anytls.sh                       # 全部使用默认值
-#    PORT=443 SNI=example.com bash setup-anytls.sh # 自定义参数
+#    bash install.sh                          # 全部使用默认值
+#    PORT=443 SNI=example.com bash install.sh # 自定义参数
 # ============================================================
 set -euo pipefail
 

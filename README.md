@@ -6,3 +6,6 @@
 `bash sing-box-anytls.sh`                       # 全部使用默认值
 
 `PORT=443 SNI=example.com bash setup-anytls.sh` # 自定义参数
+
+# 我
+`curl -LO https://github.com/crazypeace/sing-box-anytls/raw/main/install.sh || wget -O ${_##*/} $_ && PORT=2083 bash install.sh`

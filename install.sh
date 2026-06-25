@@ -12,7 +12,9 @@ set -euo pipefail
 # ── 可配置参数（环境变量优先） ──────────────────────────
 PORT="${PORT:-2083}"
 SNI="${SNI:-learn.microsoft.com}"
-PASSWORD="${PASSWORD:-$(openssl rand -base64 16)}"
+# 用机器特征种子确定性生成密码，重复运行不改变
+_pw_seed="$(cat /proc/sys/kernel/hostname)$(cat /etc/machine-id 2>/dev/null || echo 'fallback')$(timedatectl 2>/dev/null | awk '/Time zone/{print $3}')"
+PASSWORD="${PASSWORD:-$(echo -n "$_pw_seed" | sha256sum | head -c 24)}"
 BIND_ADDR="${BIND_ADDR:-::}"
 CERT_DAYS="${CERT_DAYS:-3650}"
 CERT_DIR="${CERT_DIR:-/etc/sing-box/cert}"
